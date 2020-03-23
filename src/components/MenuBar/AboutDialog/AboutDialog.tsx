@@ -19,11 +19,8 @@ function AboutDialog({ open, onClose }: PropsWithChildren<AboutDialogProps>) {
     <Dialog open={open} onClose={onClose} fullWidth={true} maxWidth="xs">
       <DialogTitle>About:</DialogTitle>
       <DialogContent>
-        <DialogContentText>Browser supported: {String(Video.isSupported)}</DialogContentText>
-        <DialogContentText>SDK Version: {Video.version}</DialogContentText>
-        <DialogContentText>App Version: {appVersion}</DialogContentText>
-        <DialogContentText>Deployed Tag: {process.env.REACT_APP_GIT_TAG || 'N/A'}</DialogContentText>
-        <DialogContentText>Deployed Commit Hash: {process.env.REACT_APP_GIT_COMMIT || 'N/A'}</DialogContentText>
+        <DialogContentText>Transitional Care Management Associates. </DialogContentText>
+        <DialogContentText>TeleHealth Services. All Right Reserved.</DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary" autoFocus>

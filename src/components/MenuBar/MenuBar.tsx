@@ -18,7 +18,10 @@ import { Typography } from '@material-ui/core';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
-      backgroundColor: theme.palette.background.default,
+      backgroundColor: '#394aa0',
+    },
+    joinroom: {
+      backgroundColor: '#394aa0',
     },
     form: {
       display: 'flex',
@@ -66,11 +69,13 @@ export default function MenuBar() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const rname = new Date().getTime() + '-imuser';
+
     // If this app is deployed as a twilio function, don't change the URL beacuse routing isn't supported.
     if (!window.location.origin.includes('twil.io')) {
-      window.history.replaceState(null, '', window.encodeURI(`/room/${roomName}`));
+      window.history.replaceState(null, '', window.encodeURI(`/room/${rname}`));
     }
-    getToken(name, roomName).then(token => connect(token));
+    getToken(rname, rname).then(token => connect(token));
   };
 
   return (
@@ -78,34 +83,7 @@ export default function MenuBar() {
       <Toolbar>
         {roomState === 'disconnected' ? (
           <form className={classes.form} onSubmit={handleSubmit}>
-            {!user?.displayName ? (
-              <TextField
-                id="menu-name"
-                label="Name"
-                className={classes.textField}
-                value={name}
-                onChange={handleNameChange}
-                margin="dense"
-              />
-            ) : (
-              <Typography className={classes.displayName} variant="body1">
-                {user.displayName}
-              </Typography>
-            )}
-            <TextField
-              id="menu-room"
-              label="Room"
-              className={classes.textField}
-              value={roomName}
-              onChange={handleRoomNameChange}
-              margin="dense"
-            />
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
-              disabled={isConnecting || !name || !roomName || isFetching}
-            >
+            <Button type="submit" color="default" variant="contained">
               Join Room
             </Button>
             {(isConnecting || isFetching) && <CircularProgress className={classes.loadingSpinner} />}

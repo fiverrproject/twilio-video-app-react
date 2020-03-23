@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const http = require('http');
 const AccessToken = require('twilio').jwt.AccessToken;
 const VideoGrant = AccessToken.VideoGrant;
+const keys = require('./keys')
 require('dotenv').config();
 
 const MAX_ALLOWED_SESSION_DURATION = 14400;
-const twilioAccountSid = 'AC015ceea6e72b7ae090e8291eb30a6935';
-const twilioApiKeySID = 'SKbf7a181dd0cf3639fe1059e99eb2ee2a';
-const twilioApiKeySecret = 'GqgW0qU3T7ea3xgbr0kErXjagyVD7bIv';
+const twilioAccountSid = keys.twilioAccountSid;
+const twilioApiKeySID = keys.twilioApiKeySID;
+const twilioApiKeySecret = keys.twilioApiKeySecret;
 
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -27,10 +27,4 @@ app.get('/token', (req, res) => {
 
 app.get('*', (_, res) => res.sendFile(path.join(__dirname, 'build/index.html')));
 
-// app.listen(3000, () => console.log('token server running on 3000'));
-
-var server = http.createServer(app);
-
-server.listen(process.env.PORT || 3000, function() {
-	console.log("Express server listening on port 3000");
-});
+app.listen(8081, () => console.log('token server running on 8081'));
