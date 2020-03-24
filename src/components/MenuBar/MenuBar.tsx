@@ -69,13 +69,13 @@ export default function MenuBar() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const rname = new Date().getTime() + '-imuser';
+    const rname = 'temp-imuser';
 
     // If this app is deployed as a twilio function, don't change the URL beacuse routing isn't supported.
     if (!window.location.origin.includes('twil.io')) {
       window.history.replaceState(null, '', window.encodeURI(`/room/${rname}`));
     }
-    getToken(rname, rname).then(token => connect(token));
+    getToken(rname, '12345').then(token => connect(token));
   };
 
   return (
