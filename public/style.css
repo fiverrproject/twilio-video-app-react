@@ -1,28 +1,25 @@
 @media (max-width: 767px) {
-	.makeStyles-identity-196 {
-		font-size: 12px;
-	}
-	.aside-root-190 {
+	aside {
 		width: 100%;
 		position: relative !important;
     	overflow-x: auto;
 	}
-	.aside-root-190 .video-root-208 {
+	aside video {
 		margin-top: -40px;
 	}
-	.div-root-200 {
-		width: 100%;
-		left: 0 !important;
+	aside h4 {
+		font-size: 12px;
 	}
-	.makeStyles-container-192 {
-		width: 120px;
+	div[data-cy-participant="temp-imuser"] {
+  		width: 120px;
 		float: left;
 		margin-right: 15px;
 	}
-	.makeStyles-identity-204 {
-		display: none !important;
+	div[data-cy-participant="temp-imuser"] div {
+  		padding: 0 !important;
 	}
-	.makeStyles-infoContainer-194 {
-		padding: 0 !important;
+	.mainparticipantContainer {
+		width: 100%;
+		left: 0 !important;
 	}
 }

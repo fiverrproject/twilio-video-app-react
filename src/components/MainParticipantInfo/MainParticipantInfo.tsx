@@ -20,16 +20,6 @@ const useStyles = makeStyles({
       filter: 'blur(4px) grayscale(1) brightness(0.5)',
     },
   },
-  identity: {
-    background: 'rgba(0, 0, 0, 0.7)',
-    padding: '0.1em 0.3em',
-    margin: '1em',
-    fontSize: '1.2em',
-    display: 'inline-flex',
-    '& svg': {
-      marginLeft: '0.3em',
-    },
-  },
   infoContainer: {
     position: 'absolute',
     zIndex: 1,
@@ -58,14 +48,9 @@ export default function MainParticipantInfo({ participant, children }: MainParti
   return (
     <div
       data-cy-main-participant
-      className={clsx(classes.container, { [classes.isVideoSwitchedOff]: isVideoSwitchedOff })}
+      className={clsx(classes.container, { [classes.isVideoSwitchedOff]: isVideoSwitchedOff }, 'my-video-container')}
     >
-      <div className={classes.infoContainer}>
-        <h4 className={classes.identity}>
-          {participant.identity}
-          {!isVideoEnabled && <VideocamOff />}
-        </h4>
-      </div>
+      <div className={classes.infoContainer}></div>
       {isVideoSwitchedOff && <BandwidthWarning />}
       {children}
     </div>

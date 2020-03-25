@@ -23,7 +23,7 @@ export default function Room() {
   return (
     <Container>
       <ParticipantStrip />
-      <MainParticipantContainer>
+      <MainParticipantContainer className="mainparticipantContainer">
         <MainParticipant />
       </MainParticipantContainer>
     </Container>
