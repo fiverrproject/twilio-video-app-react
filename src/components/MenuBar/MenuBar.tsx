@@ -75,7 +75,7 @@ export default function MenuBar() {
     if (!window.location.origin.includes('twil.io')) {
       window.history.replaceState(null, '', window.encodeURI(`/room/${rname}`));
     }
-    getToken(rname, '12345').then(token => connect(token));
+    getToken(rname, Math.floor(Math.random() * 10) + '-user').then(token => connect(token));
   };
 
   return (
